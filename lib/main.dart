@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:photo_gallery/home.dart';
-import 'package:photo_gallery/login.dart';
+import 'package:photo_gallery/Views/login.dart';
+import 'package:photo_gallery/Views/user.dart';
+import 'package:photo_gallery/Views/admin.dart';
 
-import 'package:photo_gallery/firebase_options.dart';
+import 'package:photo_gallery/Firebase/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -18,13 +19,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'PhotoGallery',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Login(),
+      home: const LoginPage(),
       routes: {
-        '/home' : (context) => Home(),
+        '/user' : (context) => UserPage(),
+        '/admin' : (context) => AdminPage(),
       },
     );
   }
