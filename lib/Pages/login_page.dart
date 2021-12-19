@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:photo_gallery/Auth/login.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget{
@@ -51,17 +53,20 @@ class _LoginPageState extends State<LoginPage>{
               Container(
                 child: ElevatedButton(
                   onPressed: () async {
-                    try {
-                      UserCredential result = await auth.signInWithEmailAndPassword(
-                        email: addressController.text,
-                        password: passwordController.text,
-                      );
+                    int status = await Login.login(addressController.text, passwordController.text);
+                    if(status == Login.user){
                       setState(() {
                         addressController.clear();
                         passwordController.clear();
                       });
                       Navigator.pushNamed(context, '/user');
-                    }catch(e){
+                    }else if(status == Login.admin){
+                      setState(() {
+                        addressController.clear();
+                        passwordController.clear();
+                      });
+                      Navigator.pushNamed(context, '/admin');
+                    }else{
                       setState(() {
                         message = "ログインに失敗しました。";
                       });

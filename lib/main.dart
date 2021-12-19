@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:photo_gallery/Views/login.dart';
-import 'package:photo_gallery/Views/user.dart';
-import 'package:photo_gallery/Views/admin.dart';
+import 'package:photo_gallery/Pages/login_page.dart';
+import 'package:photo_gallery/Pages/user_page.dart';
+import 'package:photo_gallery/Pages/admin_page.dart';
 
 import 'package:photo_gallery/Firebase/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
