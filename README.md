@@ -1,4 +1,4 @@
-# untitled
+# PhotoGallery
 
 A new Flutter project.
 
