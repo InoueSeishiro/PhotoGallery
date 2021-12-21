@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/cupertino.dart';
 
 class Login{
   static const int error = -1;
@@ -36,9 +37,18 @@ class Login{
   }
 }
 
+class UserInfoNotifier extends ChangeNotifier{
+  UserInfoNotifier(this.info);
+  UserInfo? info;
+
+  void set(UserInfo newInfo){
+    info = newInfo;
+    notifyListeners();
+  }
+}
 class UserInfo{
+  UserInfo(this.name, this.email, this.role);
   final String name;
   final String email;
   final int role;
-  UserInfo(this.name, this.email, this.role);
 }
