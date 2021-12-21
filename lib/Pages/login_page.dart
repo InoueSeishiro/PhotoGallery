@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:photo_gallery/Auth/login.dart';
+import 'package:provider/provider.dart';
 
 
 class LoginPage extends StatefulWidget{
@@ -50,20 +51,24 @@ class _LoginPageState extends State<LoginPage>{
               Container(
                 child: ElevatedButton(
                   onPressed: () async {
-                    UserInfo result = await Login.login(emailController.text, passwordController.text);
-                    if(result.role == Login.user){
-                      setState(() {
-                        emailController.clear();
-                        passwordController.clear();
-                      });
-                      Navigator.pushNamed(context, '/user');
-                    }else if(result.role == Login.admin){
-                      setState(() {
-                        emailController.clear();
-                        passwordController.clear();
-                      });
-                      Navigator.pushNamed(context, '/admin');
-                    }else{
+                    try{
+                      UserInfo result = await Login.login(emailController.text, passwordController.text);
+                      Provider.of<UserInfoNotifier>(context, listen: false).set(result);
+                      if(result.role == Login.user){
+                        setState(() {
+                          emailController.clear();
+                          passwordController.clear();
+                        });
+                        Navigator.pushNamed(context, '/user');
+                      }else if(result.role == Login.admin) {
+                        setState(() {
+                          emailController.clear();
+                          passwordController.clear();
+                        });
+                        Navigator.pushNamed(context, '/admin');
+                      }
+                    }catch(e){
+                      print(e.toString());
                       setState(() {
                         message = "ログインに失敗しました。";
                       });
