@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:photo_gallery/Auth/login.dart';
 
-import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget{
   const LoginPage({Key? key}) : super(key: key);
@@ -13,14 +12,12 @@ class LoginPage extends StatefulWidget{
 
 class _LoginPageState extends State<LoginPage>{
   String message = "";
-  final addressController = TextEditingController();
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
-
-  final FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
   void dispose(){
-    addressController.dispose();
+    emailController.dispose();
     passwordController.dispose();
     super.dispose();
   }
@@ -36,7 +33,7 @@ class _LoginPageState extends State<LoginPage>{
             children: [
               TextFormField(
                 decoration: const InputDecoration(labelText: "メールアドレス"),
-                controller: addressController,
+                controller: emailController,
               ),
               TextFormField(
                 decoration: const InputDecoration(labelText: "パスワード"),
@@ -53,16 +50,16 @@ class _LoginPageState extends State<LoginPage>{
               Container(
                 child: ElevatedButton(
                   onPressed: () async {
-                    int status = await Login.login(addressController.text, passwordController.text);
-                    if(status == Login.user){
+                    UserInfo result = await Login.login(emailController.text, passwordController.text);
+                    if(result.role == Login.user){
                       setState(() {
-                        addressController.clear();
+                        emailController.clear();
                         passwordController.clear();
                       });
                       Navigator.pushNamed(context, '/user');
-                    }else if(status == Login.admin){
+                    }else if(result.role == Login.admin){
                       setState(() {
-                        addressController.clear();
+                        emailController.clear();
                         passwordController.clear();
                       });
                       Navigator.pushNamed(context, '/admin');

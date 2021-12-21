@@ -6,12 +6,12 @@ class Login{
   static const int user = 0;
   static const int admin = 1;
 
-  static Future<UserInfo> login(String address, String password) async{
+  static Future<UserInfo> login(String email, String password) async{
     String name;
     int role;
     try {
       UserCredential result = await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: address,
+        email: email,
         password: password,
       );
 
@@ -32,13 +32,13 @@ class Login{
     }catch(e){
       rethrow;
     }
-    return UserInfo(name,address,role);
+    return UserInfo(name,email,role);
   }
 }
 
 class UserInfo{
   final String name;
-  final String address;
+  final String email;
   final int role;
-  UserInfo(this.name, this.address, this.role);
+  UserInfo(this.name, this.email, this.role);
 }
