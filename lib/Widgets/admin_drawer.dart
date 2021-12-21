@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'account_panel.dart';
+import 'account_header.dart';
 
 class AdminDrawer extends StatelessWidget{
   const AdminDrawer({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class AdminDrawer extends StatelessWidget{
       child: ListView(
         padding: const EdgeInsets.all(10),
         children: [
-          const DrawerHeader(child: AccountPanel()),
+          AccountHeader(),
           ListTile(
               title:  const Text("ユーザー情報編集"),
               onTap: (){

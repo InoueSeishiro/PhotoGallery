@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'account_panel.dart';
+import 'account_header.dart';
 
 class UserDrawer extends StatelessWidget{
   const UserDrawer({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class UserDrawer extends StatelessWidget{
       child: ListView(
         padding: const EdgeInsets.all(10),
         children: [
-          const DrawerHeader(child: AccountPanel()),
+          AccountHeader(),
           ListTile(
               title:  const Text("ユーザー設定"),
               onTap: (){

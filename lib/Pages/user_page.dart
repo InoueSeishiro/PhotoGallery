@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:photo_gallery/Widgets/account_panel.dart';
+import 'package:photo_gallery/Widgets/account_header.dart';
 
 import 'package:photo_gallery/Widgets/my_app_bar.dart';
 import 'package:photo_gallery/Widgets/user_drawer.dart';
