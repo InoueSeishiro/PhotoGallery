@@ -22,6 +22,8 @@ class MyApp extends StatelessWidget{
         title: 'PhotoGallery',
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          primaryColor: Colors.black,
+          fontFamily: 'Noto Sans JP',
         ),
         initialRoute: '/',
         routes: {

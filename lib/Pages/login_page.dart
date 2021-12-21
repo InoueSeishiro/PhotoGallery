@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage>{
                 padding: EdgeInsets.all(10),
                 child: Text(
                   message,
-                  style: TextStyle(color: Colors.red, fontSize: 10),
+                  style: const TextStyle(color: Colors.red, fontSize: 10),
                 ),
               ),
               Container(
@@ -68,7 +68,6 @@ class _LoginPageState extends State<LoginPage>{
                         Navigator.pushNamed(context, '/admin');
                       }
                     }catch(e){
-                      print(e.toString());
                       setState(() {
                         message = "ログインに失敗しました。";
                       });
