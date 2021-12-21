@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:photo_gallery/WIdgets/myAppBar.dart';
+
 class UserPage extends StatelessWidget{
   const UserPage({Key? key}) : super(key: key);
 
@@ -7,7 +9,10 @@ class UserPage extends StatelessWidget{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(title: const Text("PhotoGallery"),),
+      appBar: MyAppBar(),
+      drawer: Drawer(
+
+      ),
       body: const Center(child: Text("User Page")),
     );
   }
