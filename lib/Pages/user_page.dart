@@ -1,9 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:photo_gallery/Widgets/account_header.dart';
 import 'package:photo_gallery/Widgets/gallery.dart';
+import 'package:photo_gallery/Widgets/left_side_button.dart';
+import 'package:photo_gallery/Widgets/side_menu.dart';
 
-import 'package:photo_gallery/Widgets/my_app_bar.dart';
 import 'package:photo_gallery/Widgets/user_drawer.dart';
 
 class UserPage extends StatefulWidget{
@@ -11,10 +10,10 @@ class UserPage extends StatefulWidget{
 
   @override
   _UserPageState createState() => _UserPageState();
-
 }
 class _UserPageState extends State<UserPage>{
   int _index = 0;
+  static const double menuWidth = 200;
 
   @override
   void initState(){
@@ -25,27 +24,16 @@ class _UserPageState extends State<UserPage>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: MyAppBar(),
       endDrawer: UserDrawer(),
-      body: Row(
+      body: Stack(
         children: [
-          NavigationRail(
-            groupAlignment: 0.0,
-            destinations: const [
-              NavigationRailDestination(
-                  icon: Icon(Icons.account_circle),
-                  label: Text("アカウント")
-              ),
-              NavigationRailDestination(
-                  icon: Icon(Icons.settings),
-                  label: Text("設定")
-              ),
-            ],
-            selectedIndex: _index,
-          ),
-          const Expanded(
-            child: Gallery(urlList: [],),
-          ),
+          SideMenu(menuWidth: menuWidth, menuList: [
+            Text("ホーム"),
+            Text("アカウント"),
+            Text("設定"),
+          ]),
+          Gallery(urlList: [],menuWidth: menuWidth,),
+          LeftSideButton(),
         ]
       )
     );
