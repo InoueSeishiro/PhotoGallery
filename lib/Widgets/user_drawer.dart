@@ -8,8 +8,7 @@ class UserDrawer extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        padding: const EdgeInsets.all(10),
+      child: Column(
         children: [
           AccountHeader(),
           ListTile(
