@@ -30,30 +30,5 @@ class AccountHeader extends StatelessWidget{
       ),
       decoration: BoxDecoration(color: Colors.white)
     );
-    //   crossAxisAlignment: CrossAxisAlignment.start,
-    //   children: [
-    //     const Icon(
-    //       Icons.account_circle,
-    //       color: Colors.black,
-    //       size: 80,
-    //     ),
-    //     Text(
-    //       Provider.of<UserInfoNotifier>(context, listen: false).info!.name,
-    //       style: const TextStyle(
-    //         color: Colors.black,
-    //         fontSize: 30,
-    //         fontWeight: FontWeight.bold,
-    //       ),
-    //     ),
-    //     Text(
-    //       Provider.of<UserInfoNotifier>(context, listen: false).info!.email,
-    //       style: const TextStyle(
-    //         color: Colors.grey,
-    //         fontSize: 15,
-    //         fontWeight: FontWeight.bold,
-    //       ),
-    //     ),
-    //   ]
-    // );
   }
 }

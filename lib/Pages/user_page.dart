@@ -32,10 +32,20 @@ class _UserPageState extends State<UserPage>{
             Text("アカウント"),
             Text("設定"),
           ]),
-          Gallery(urlList: [],menuWidth: menuWidth,),
+          Gallery(
+            urlList: List.generate(22, (int index) => 'https://flutter.github.io/assets-for-api-docs/assets/widgets/falcon.jpg'),
+            menuWidth: menuWidth,
+          ),
           LeftSideButton(),
         ]
-      )
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+
+        },
+        backgroundColor: Colors.redAccent,
+        child: const Icon(Icons.touch_app),
+      ),
     );
   }
 }

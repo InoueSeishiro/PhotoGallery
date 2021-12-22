@@ -45,6 +45,10 @@ class UserInfoNotifier extends ChangeNotifier{
     info = newInfo;
     notifyListeners();
   }
+  void logout(){
+    info = null;
+    notifyListeners();
+  }
 }
 class UserInfo{
   UserInfo(this.name, this.email, this.role);
