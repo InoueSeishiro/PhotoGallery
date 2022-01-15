@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class LeftSideButton extends StatelessWidget{
-  const LeftSideButton({Key? key}) : super(key: key);
+class RightSideButton extends StatelessWidget{
+  const RightSideButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

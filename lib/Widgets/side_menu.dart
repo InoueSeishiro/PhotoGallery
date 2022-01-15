@@ -20,8 +20,13 @@ class SideMenu extends StatelessWidget{
             SizedBox(height:16),
             Text("Photo Gallery"),
             const Spacer(),
-            for(Text menu in menuList)
-              MenuItem(child: menu,),
+            for(int i = 0; i<menuList.length; i++)
+              MenuItem(
+                child: menuList[i],
+                onTap: () {
+                  Provider.of<MenuIndexNotifier>(context, listen: false).change(i);
+                }
+              ),
             const Spacer(),
             MenuItem(
               child: Text("ログアウト"),
@@ -52,5 +57,13 @@ class MenuItem extends StatelessWidget{
         child: child,
       )
     );
+  }
+}
+
+class MenuIndexNotifier extends ChangeNotifier{
+  int index = 0;
+  void change(int new_index){
+    index = new_index;
+    notifyListeners();
   }
 }
