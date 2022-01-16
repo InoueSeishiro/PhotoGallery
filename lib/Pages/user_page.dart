@@ -12,9 +12,8 @@ class UserPage extends StatelessWidget{
   static const double menuWidth = 200;
   final CenterBody centerBody = CenterBody(
     menuWidth: menuWidth,
-    widgets: [
+    widgets: const [
       Home(),
-      Account(),
       Setting(),
     ]
   );
@@ -22,23 +21,38 @@ class UserPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    return ChangeNotifierProvider<MenuIndexNotifier>(
+      create: (context) => MenuIndexNotifier(),
+      child: Stack(
+        children: [
+          const SideMenu(
+            menuWidth: menuWidth,
+            menuList: [
+              Text("ホーム"),
+              Text("設定"),
+            ],
+          ),
+          centerBody,
+        ]
+      ),
+    );
+  }
+}
+
+class Home extends StatelessWidget{
+  const Home({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       endDrawer: UserDrawer(),
-      body: ChangeNotifierProvider<MenuIndexNotifier>(
-        create: (context) => MenuIndexNotifier(),
-        child: Stack(
-          children: [
-            SideMenu(
-              menuWidth: menuWidth,
-              menuList: [
-                Text("ホーム"),
-                Text("アカウント"),
-                Text("設定"),
-              ],
-            ),
-            centerBody,
-          ]
-        ),
+      body:Stack(
+        children: [
+          Gallery(
+            urlList: List.generate(22, (int index) => 'https://flutter.github.io/assets-for-api-docs/assets/widgets/falcon.jpg'),
+          ),
+          const RightSideButton(),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -51,38 +65,30 @@ class UserPage extends StatelessWidget{
   }
 }
 
-class Home extends StatelessWidget{
-  const Home({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Gallery(
-          urlList: List.generate(22, (int index) => 'https://flutter.github.io/assets-for-api-docs/assets/widgets/falcon.jpg'),
-        ),
-        RightSideButton(),
-      ],
-    );
-  }
-}
-
-class Account extends StatelessWidget{
-  const Account({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-    );
-  }
-}
-
 class Setting extends StatelessWidget{
   const Setting({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.only(left:100,top:30,right:100,bottom:30),
+        child: Column(
+          children: [
+            const Icon(
+              Icons.account_circle,
+              size: 200,
+            ),
+            Text("user@example.com", style: TextStyle(fontSize: 20),),
+            Spacer(),
+            ElevatedButton(
+                onPressed: (){},
+                child: Text("アカウント編集")
+            ),
+            Spacer(flex: 5)
+          ],
+        ),
+      ),
     );
   }
 }

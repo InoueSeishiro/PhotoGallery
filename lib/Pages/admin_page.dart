@@ -3,7 +3,6 @@ import 'package:photo_gallery/Widgets/center_body.dart';
 import 'package:photo_gallery/Widgets/gallery.dart';
 import 'package:photo_gallery/Widgets/right_side_button.dart';
 
-import 'package:photo_gallery/Widgets/my_app_bar.dart';
 import 'package:photo_gallery/Widgets/admin_drawer.dart';
 import 'package:photo_gallery/Widgets/side_menu.dart';
 import 'package:provider/provider.dart';
@@ -14,9 +13,8 @@ class AdminPage extends StatelessWidget{
   static const double menuWidth = 200;
   final CenterBody centerBody = CenterBody(
     menuWidth: menuWidth,
-    widgets: [
+    widgets: const [
       Home(),
-      Account(),
       UserInfoEdit(),
       Setting(),
     ]
@@ -25,24 +23,20 @@ class AdminPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-      endDrawer: AdminDrawer(),
-      body: ChangeNotifierProvider<MenuIndexNotifier>(
-        create: (context) => MenuIndexNotifier(),
-        child: Stack(
-          children: [
-            SideMenu(
-              menuWidth: menuWidth,
-              menuList: [
-                Text("ホーム"),
-                Text("アカウント"),
-                Text("ユーザー情報編集"),
-                Text("設定"),
-              ]
-            ),
-            centerBody,
-          ]
-        ),
+    return ChangeNotifierProvider<MenuIndexNotifier>(
+      create: (context) => MenuIndexNotifier(),
+      child: Stack(
+        children: [
+          const SideMenu(
+            menuWidth: menuWidth,
+            menuList: [
+              Text("ホーム"),
+              Text("ユーザー情報編集"),
+              Text("設定"),
+            ]
+          ),
+          centerBody,
+        ]
       ),
     );
   }
@@ -53,26 +47,15 @@ class Home extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Gallery(
-          urlList: List.generate(22, (int index) => 'https://flutter.github.io/assets-for-api-docs/assets/widgets/falcon.jpg'),
-        ),
-        RightSideButton(),
-      ],
+    return Scaffold(
+      endDrawer: AdminDrawer(),
+      body: Gallery(
+        urlList: List.generate(22, (int index) => 'https://flutter.github.io/assets-for-api-docs/assets/widgets/falcon.jpg'),
+      ),
     );
   }
 }
 
-class Account extends StatelessWidget{
-  const Account({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-    );
-  }
-}
 class UserInfoEdit extends StatelessWidget{
   const UserInfoEdit({Key? key}) : super(key: key);
 

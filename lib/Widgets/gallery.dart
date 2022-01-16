@@ -9,7 +9,7 @@ class Gallery extends StatelessWidget{
     return Container(
       child:GridView.count(
         crossAxisCount: 4,
-        padding: EdgeInsets.only(left: 200,top:10,bottom:10,right: 200),
+        padding: EdgeInsets.only(left: 50,top:10,bottom:10,right: 50),
         crossAxisSpacing: 30,
         mainAxisSpacing: 30,
 
