@@ -46,5 +46,5 @@ app.*.map.json
 /android/app/release
 
 # custom ignore
-lib/test.dart
+test/test.dart
 lib/Init/*

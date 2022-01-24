@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:photo_gallery/Auth/login.dart';
+import 'package:photo_gallery/auth/login.dart';
 import 'package:provider/provider.dart';
 
 class AccountHeader extends StatelessWidget{

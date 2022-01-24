@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:photo_gallery/Firebase/firebase_options.dart';
+import 'package:photo_gallery/firebase/firebase_options.dart';
 
 import 'my_app.dart';
 

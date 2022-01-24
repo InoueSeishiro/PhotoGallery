@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:photo_gallery/Widgets/gallery.dart';
-import 'package:photo_gallery/Widgets/right_side_button.dart';
-import 'package:photo_gallery/Widgets/side_menu.dart';
-import 'package:photo_gallery/Widgets/center_body.dart';
+import 'package:photo_gallery/widgets/gallery.dart';
+import 'package:photo_gallery/widgets/right_side_button.dart';
+import 'package:photo_gallery/widgets/side_menu.dart';
+import 'package:photo_gallery/widgets/center_body.dart';
 
-import 'package:photo_gallery/Widgets/user_drawer.dart';
+import 'package:photo_gallery/widgets/user_drawer.dart';
 import 'package:provider/provider.dart';
 
 class UserPage extends StatelessWidget{

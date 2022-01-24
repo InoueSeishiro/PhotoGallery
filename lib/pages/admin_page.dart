@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:photo_gallery/Widgets/center_body.dart';
-import 'package:photo_gallery/Widgets/gallery.dart';
-import 'package:photo_gallery/Widgets/right_side_button.dart';
+import 'package:photo_gallery/widgets/center_body.dart';
+import 'package:photo_gallery/widgets/gallery.dart';
 
-import 'package:photo_gallery/Widgets/admin_drawer.dart';
-import 'package:photo_gallery/Widgets/side_menu.dart';
+import 'package:photo_gallery/widgets/admin_drawer.dart';
+import 'package:photo_gallery/widgets/image_manager.dart';
+import 'package:photo_gallery/widgets/side_menu.dart';
 import 'package:provider/provider.dart';
 
 class AdminPage extends StatelessWidget{
@@ -49,9 +49,7 @@ class Home extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       endDrawer: AdminDrawer(),
-      body: Gallery(
-        urlList: List.generate(22, (int index) => 'https://flutter.github.io/assets-for-api-docs/assets/widgets/falcon.jpg'),
-      ),
+      body: ImageManager(),
     );
   }
 }

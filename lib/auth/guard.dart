@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
-import 'package:photo_gallery/Auth/login.dart';
-import 'package:photo_gallery/Pages/login_page.dart';
+import 'package:photo_gallery/auth/login.dart';
+import 'package:photo_gallery/pages/login_page.dart';
 import 'package:provider/provider.dart';
 
 class Guard extends StatelessWidget{

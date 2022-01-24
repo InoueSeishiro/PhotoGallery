@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'account_header.dart';
+import 'package:photo_gallery/widgets/account_header.dart';
 
 class UserDrawer extends StatelessWidget{
   const UserDrawer({Key? key}) : super(key: key);

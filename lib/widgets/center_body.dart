@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:photo_gallery/Widgets/side_menu.dart';
+import 'package:photo_gallery/widgets/side_menu.dart';
 import 'package:provider/provider.dart';
 
 class CenterBody extends StatelessWidget {
