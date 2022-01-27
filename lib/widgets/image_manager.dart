@@ -47,35 +47,68 @@ class CommandList extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      width: width,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CommandIcon(icon: Icons.touch_app, size: width,),
-          CommandIcon(icon: Icons.download_sharp, size: width,),
-          CommandIcon(icon: Icons.upload_sharp, size: width,),
-        ],
-      )
+    return Material(
+      elevation: 4.0,
+      child: Container(
+          alignment: Alignment.center,
+          width: width,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CommandIcon(icon: Icons.touch_app, size: width,),
+              CommandIcon(icon: Icons.download_sharp, size: width,),
+              CommandIcon(icon: Icons.upload_sharp, size: width,),
+            ],
+          )
+      ),
     );
   }
 }
 
-class CommandIcon extends StatelessWidget{
+class CommandIcon extends StatefulWidget {
   CommandIcon({Key? key, required this.size, required this.icon}): super(key: key);
-
   final double size;
   final IconData icon;
-  final double padding = 10;
+  final double padding = 5;
+
+  @override
+  _CommandIconState createState() => _CommandIconState();
+}
+class _CommandIconState extends State<CommandIcon>{
+  late Color _color;
+  late bool _isTapped;
+
+  @override
+  void initState(){
+    super.initState();
+    _color = Colors.transparent;
+    _isTapped = false;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(padding),
-      child:SizedBox.square(
-        dimension: size - padding*2,
-        child: Center(child: Icon(icon, size: size - padding*2),),
+      padding: EdgeInsets.all(widget.padding),
+      child: GestureDetector(
+        child: Container(
+          decoration: BoxDecoration(
+            color: _color,
+          ),
+          width: widget.size - widget.padding*4,
+          height: widget.size - widget.padding*4,
+          alignment: Alignment.center,
+          child: Icon(widget.icon, size: widget.size - widget.padding*4),
+        ),
+        onTap: (){
+          setState(() {
+            if(_isTapped){
+              _color = Colors.transparent;
+            }else{
+              _color = Colors.black26;
+            }
+            _isTapped = !_isTapped;
+          });
+        },
       ),
     );
   }
