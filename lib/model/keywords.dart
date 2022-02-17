@@ -30,25 +30,24 @@ class KeywordNotifier extends ChangeNotifier{
         ],
       ),
     ];
+    selectedKeywords = List<String>.empty(growable: true);
   }
-  late final List<Keyword> keywords;
+  late List<Keyword> keywords;
+  late List<String> selectedKeywords;
 
-  void add(Keyword keyword){
-    keywords.add(keyword);
-    notifyListeners();
-  }
-  void remove(Keyword keyword){
-    if(keywords.contains(keyword)){
-      keywords.remove(keyword);
-    }
-    notifyListeners();
-  }
   void clear(){
-    keywords.clear();
+    selectedKeywords.clear();
     notifyListeners();
   }
-  List<Keyword> getPathList(){
-    return keywords;
+  void select(String keyword){
+    if(!selectedKeywords.contains(keyword)) {
+      selectedKeywords.add(keyword);
+      notifyListeners();
+    }
+  }
+  void unselect(String keyword){
+    selectedKeywords.remove(keyword);
+    notifyListeners();
   }
   List<String> getPathListWithKeyword(String keyword) {
     return keywords.firstWhere((element) => (element.keyword == keyword)? true: false).imagePathList;
