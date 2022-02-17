@@ -3,7 +3,7 @@ import 'package:photo_gallery/widgets/side_menu.dart';
 import 'package:provider/provider.dart';
 
 class CenterBody extends StatelessWidget {
-  CenterBody({Key? key, required this.menuWidth, required this.widgets}) : super(key: key);
+  const CenterBody({Key? key, required this.menuWidth, required this.widgets}) : super(key: key);
 
   final double menuWidth;
   final List<Widget> widgets;

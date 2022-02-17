@@ -8,14 +8,14 @@ import 'package:photo_gallery/pages/user_page.dart';
 import 'package:provider/provider.dart';
 
 class MyApp extends StatelessWidget{
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : this.info = null, super(key: key);
+  MyApp.test({required this.info});
+
+  final UserInfo? info;
 
   @override
   Widget build(BuildContext context) {
-    // TODO: read user data from local
-    UserInfo? info;
 
-    // DONE: build App
     return ChangeNotifierProvider<UserInfoNotifier?>(
       create: (_) => UserInfoNotifier(info),
       child:MaterialApp(

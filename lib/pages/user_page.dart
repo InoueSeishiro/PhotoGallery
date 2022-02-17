@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_gallery/model/keywords.dart';
 import 'package:photo_gallery/widgets/gallery.dart';
 import 'package:photo_gallery/widgets/right_side_button.dart';
 import 'package:photo_gallery/widgets/side_menu.dart';
@@ -8,19 +9,11 @@ import 'package:photo_gallery/widgets/user_drawer.dart';
 import 'package:provider/provider.dart';
 
 class UserPage extends StatelessWidget{
-  UserPage({Key? key}) : super(key: key);
+  const UserPage({Key? key}) : super(key: key);
   static const double menuWidth = 200;
-  final CenterBody centerBody = CenterBody(
-    menuWidth: menuWidth,
-    widgets: const [
-      Home(),
-      Setting(),
-    ]
-  );
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return ChangeNotifierProvider<MenuIndexNotifier>(
       create: (context) => MenuIndexNotifier(),
       child: Stack(
@@ -32,9 +25,19 @@ class UserPage extends StatelessWidget{
               Text("設定"),
             ],
           ),
-          centerBody,
+          buildCenterBody(),
         ]
       ),
+    );
+  }
+
+  buildCenterBody(){
+    return CenterBody(
+        menuWidth: menuWidth,
+        widgets: const [
+          Home(),
+          Setting(),
+        ]
     );
   }
 }
@@ -44,22 +47,23 @@ class Home extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      endDrawer: UserDrawer(),
-      body:Stack(
-        children: [
-          Gallery(
-            urlList: List.generate(22, (int index) => 'https://flutter.github.io/assets-for-api-docs/assets/widgets/falcon.jpg'),
-          ),
-          const RightSideButton(),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-
-        },
-        backgroundColor: Colors.redAccent,
-        child: const Icon(Icons.touch_app),
+    return ChangeNotifierProvider<KeywordNotifier>(
+      create: (_) => KeywordNotifier(),
+      child: Scaffold(
+        endDrawer: UserDrawer(),
+        body: Stack(
+          children: [
+            Gallery(
+              urlList: List.generate(22, (int index) => 'https://i.ibb.co/vDvKN2K/tiger.jpg'),
+            ),
+            const RightSideButton(),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: Colors.redAccent,
+          child: const Icon(Icons.touch_app),
+        ),
       ),
     );
   }
