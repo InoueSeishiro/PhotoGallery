@@ -5,8 +5,8 @@ import 'package:photo_gallery/widgets/gallery.dart';
 import 'package:photo_gallery/widgets/right_side_button.dart';
 import 'package:photo_gallery/widgets/side_menu.dart';
 import 'package:photo_gallery/widgets/center_body.dart';
-
 import 'package:photo_gallery/widgets/user_drawer.dart';
+
 import 'package:provider/provider.dart';
 
 class UserPage extends StatelessWidget{

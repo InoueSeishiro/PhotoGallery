@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Apps/start_app.dart';
+import 'package:photo_gallery/apps/start_app.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

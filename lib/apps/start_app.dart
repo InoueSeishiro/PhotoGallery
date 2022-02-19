@@ -1,8 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_gallery/firebase/firebase_options.dart';
-
-import 'my_app.dart';
+import 'package:photo_gallery/apps/my_app.dart';
 
 class StartApp extends StatelessWidget {
   const StartApp({Key? key}) : super(key: key);
