@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_gallery/auth/login.dart';
 import 'package:photo_gallery/model/keywords.dart';
 import 'package:photo_gallery/widgets/gallery.dart';
 import 'package:photo_gallery/widgets/right_side_button.dart';
@@ -81,13 +82,13 @@ class Setting extends StatelessWidget{
               Icons.account_circle,
               size: 200,
             ),
-            Text("user@example.com", style: TextStyle(fontSize: 20),),
-            Spacer(),
+            Text(Provider.of<UserInfoNotifier>(context).info?.email as String, style: TextStyle(fontSize: 20),),
+            const Spacer(),
             ElevatedButton(
                 onPressed: (){},
-                child: Text("アカウント編集")
+                child: const Text("アカウント編集")
             ),
-            Spacer(flex: 5)
+            const Spacer(flex: 5)
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:photo_gallery/auth/guard.dart';
 import 'package:photo_gallery/auth/login.dart';
+import 'package:photo_gallery/model/keywords.dart';
 import 'package:photo_gallery/pages/admin_page.dart';
 
 import 'package:photo_gallery/pages/login_page.dart';
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-
+    KeywordData.init();
     return ChangeNotifierProvider<UserInfoNotifier?>(
       create: (_) => UserInfoNotifier(),
       child:MaterialApp(

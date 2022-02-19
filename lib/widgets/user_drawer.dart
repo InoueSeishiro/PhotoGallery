@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_gallery/model/keywords.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +20,23 @@ class UserDrawer extends StatelessWidget {
             const Divider(),
             buildSelectedKeywordArea(context, notifier.selectedKeywords),
             const Divider(),
-            buildKeywordArea(context, notifier.availableKeywords),
+            (!KeywordData.state)? FutureBuilder(
+              future: KeywordData.init(),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if(snapshot.hasData) {
+                  notifier.reload();
+                  return buildKeywordArea(context, notifier.availableKeywords);
+                }else if(snapshot.hasError){
+                  return Container(
+                    padding: const EdgeInsets.only(top: 20),
+                    alignment: Alignment.center,
+                    child: const Text("データ読み込みに失敗しました。"),
+                  );
+                }else{
+                  return const CircularProgressIndicator();
+                }
+              },
+            ): buildKeywordArea(context, notifier.availableKeywords),
           ],
         ),
       ),

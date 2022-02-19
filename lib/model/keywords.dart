@@ -1,21 +1,42 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class KeywordData{
-  static const List<String> keywordList = [
-    "animal",
-    "tiger",
-    "turtle",
-  ];
-  static const List<String> pathList = [
-    "https://i.ibb.co/3kYLxtL/tiger.jpg",
-    "https://i.ibb.co/5MK2H4k/tertle.jpg",
-  ];
-  static const Set<Relation> relationSet = <Relation>{
-    Relation(keywordID: 0, imageID: 0),
-    Relation(keywordID: 0, imageID: 1),
-    Relation(keywordID: 1, imageID: 0),
-    Relation(keywordID: 2, imageID: 1),
-  };
+  static bool state = false;
+  static late List<String> keywordList = List.empty(growable: true);
+  static late List<String> pathList = List.empty(growable: true);
+  static late Set<Relation> relationSet = <Relation>{};
+
+  static Future<bool> init() async{
+    DataSnapshot snapshot = await FirebaseDatabase.instance.ref("keywordData").get();
+    for(DataSnapshot childNode in snapshot.children){
+      String? imagePath = childNode.child("imagePath").value as String?;
+      int pathID;
+      int keywordID;
+      if(imagePath != null) {
+        if (pathList.contains(imagePath)) {
+          pathID = pathList.indexOf(imagePath);
+        } else {
+          pathID = pathList.length;
+          pathList.add(imagePath);
+        }
+        for (DataSnapshot dchildNode in childNode.child("keywords").children) {
+          String? keyword = dchildNode.value as String?;
+          if(keyword != null) {
+            if (keywordList.contains(keyword)) {
+              keywordID = keywordList.indexOf(keyword);
+            } else {
+              keywordID = keywordList.length;
+              keywordList.add(keyword);
+            }
+            relationSet.add(Relation(imageID: pathID, keywordID: keywordID));
+          }
+        }
+      }
+    }
+    state = true;
+    return state;
+  }
 
   static Set<int> getPathIDSet(String keyword){
     int keyIndex = keywordList.indexOf(keyword);
@@ -120,12 +141,16 @@ class KeywordNotifier extends ChangeNotifier{
     if(pathIDSetList.isEmpty){
       pathIDSet.addAll(List.generate(KeywordData.pathList.length, (index) => index));
     }else{
+      pathIDSet = pathIDSetList.values.first;
       pathIDSetList.forEach((key, value) { 
         pathIDSet = pathIDSet.intersection(value);
       });
     }
   }
-
+  void reload(){
+    availableKeywords = KeywordData.keywordList.toSet();
+    reloadPathIDSet();
+  }
   List<String> getURLList(){
     return KeywordData.getPathListOfIdSet(pathIDSet);
   }
