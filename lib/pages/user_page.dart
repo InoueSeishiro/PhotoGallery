@@ -32,9 +32,9 @@ class UserPage extends StatelessWidget{
   }
 
   buildCenterBody(){
-    return CenterBody(
+    return const CenterBody(
         menuWidth: menuWidth,
-        widgets: const [
+        widgets: [
           Home(),
           Setting(),
         ]
@@ -52,11 +52,9 @@ class Home extends StatelessWidget{
       child: Scaffold(
         endDrawer: UserDrawer(),
         body: Stack(
-          children: [
-            Gallery(
-              urlList: List.generate(22, (int index) => 'https://i.ibb.co/vDvKN2K/tiger.jpg'),
-            ),
-            const RightSideButton(),
+          children: const [
+            Gallery(),
+            RightSideButton(),
           ],
         ),
         floatingActionButton: FloatingActionButton(

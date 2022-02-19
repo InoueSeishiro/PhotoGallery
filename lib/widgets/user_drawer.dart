@@ -19,7 +19,7 @@ class UserDrawer extends StatelessWidget {
             const Divider(),
             buildSelectedKeywordArea(context, notifier.selectedKeywords),
             const Divider(),
-            buildKeywordArea(context, notifier.keywords),
+            buildKeywordArea(context, notifier.availableKeywords),
           ],
         ),
       ),
@@ -47,7 +47,7 @@ class UserDrawer extends StatelessWidget {
     );
   }
 
-  Widget buildSelectedKeywordArea(BuildContext context, List<String> selectedKeywords){
+  Widget buildSelectedKeywordArea(BuildContext context, Set<String> selectedKeywords){
     if(selectedKeywords.isEmpty){
       return const Text("No keyword");
     }else{
@@ -76,7 +76,7 @@ class UserDrawer extends StatelessWidget {
     }
   }
 
-  Widget buildKeywordArea(BuildContext context, List<Keyword> keywords){
+  Widget buildKeywordArea(BuildContext context, Set<String> keywords){
     if(keywords.isEmpty){
       return const Text("No keyword");
     }else{
@@ -86,7 +86,7 @@ class UserDrawer extends StatelessWidget {
         runSpacing: 10,
         children: List.generate(
           keywords.length,
-              (index) => KeywordButton(title: keywords.elementAt(index).keyword, selected: false),
+              (index) => KeywordButton(title: keywords.elementAt(index), selected: false),
         ),
       );
     }

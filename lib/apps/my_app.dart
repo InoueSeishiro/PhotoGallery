@@ -8,16 +8,13 @@ import 'package:photo_gallery/pages/user_page.dart';
 import 'package:provider/provider.dart';
 
 class MyApp extends StatelessWidget{
-  const MyApp({Key? key}) : this.info = null, super(key: key);
-  MyApp.test({required this.info});
-
-  final UserInfo? info;
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
     return ChangeNotifierProvider<UserInfoNotifier?>(
-      create: (_) => UserInfoNotifier(info),
+      create: (_) => UserInfoNotifier(),
       child:MaterialApp(
         title: 'PhotoGallery',
         theme: ThemeData(
@@ -27,9 +24,9 @@ class MyApp extends StatelessWidget{
         ),
         initialRoute: '/',
         routes: {
-          '/': (_) => LoginPage(),
-          '/user': (_) => Guard(role: Login.user, child:UserPage()),
-          '/admin': (_) => Guard(role: Login.admin, child:AdminPage()),
+          '/': (_) => const LoginPage(),
+          '/user': (_) => const Guard(role: Login.user, child: UserPage()),
+          '/admin': (_) => Guard(role: Login.admin, child: AdminPage()),
         },
       ),
     );

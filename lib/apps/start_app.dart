@@ -14,7 +14,7 @@ class StartApp extends StatelessWidget {
           if(snapshot.hasError){
             return const Center(child: Text("Error occurred"));
           }else if(snapshot.connectionState == ConnectionState.done){
-            return MyApp();
+            return const MyApp();
           }else{
             return const Center(child:CircularProgressIndicator());
           }

@@ -38,7 +38,7 @@ class Login{
 }
 
 class UserInfoNotifier extends ChangeNotifier{
-  UserInfoNotifier(this.info);
+  UserInfoNotifier({this.info});
   UserInfo? info;
 
   void set(UserInfo newInfo){

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:photo_gallery/model/keywords.dart';
+import 'package:provider/provider.dart';
 
 class Gallery extends StatelessWidget{
-  const Gallery({Key? key, required this.urlList}) : super(key: key);
+  const Gallery({Key? key}) : super(key: key);
 
-  final List<String> urlList;
   @override
   Widget build(BuildContext context) {
+    List<String> urlList = Provider.of<KeywordNotifier>(context).getURLList();
     return GridView.count(
       crossAxisCount: 4,
       padding: const EdgeInsets.only(left: 50,top:10,bottom:10,right: 50),
