@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'account_header.dart';
+import 'package:photo_gallery/widgets/account_header.dart';
 
 class AdminDrawer extends StatelessWidget{
   const AdminDrawer({Key? key}) : super(key: key);

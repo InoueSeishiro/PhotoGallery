@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:photo_gallery/widgets/center_body.dart';
-import 'package:photo_gallery/widgets/gallery.dart';
-
 import 'package:photo_gallery/widgets/admin_drawer.dart';
 import 'package:photo_gallery/widgets/image_manager.dart';
 import 'package:photo_gallery/widgets/side_menu.dart';
