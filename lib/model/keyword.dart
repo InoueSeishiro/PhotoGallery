@@ -42,18 +42,20 @@ class KeywordData{
     int keyIndex = keywordList.indexOf(keyword);
     Iterable<Relation> relations = relationSet.where((element)=>(element.keywordID == keyIndex)? true: false);
     Set<int> result = <int>{};
-    relations.forEach((element) {
-      if(!result.contains(element.imageID)) result.add(element.imageID);
-    });
+    for(Relation rel in relations){
+      if(!result.contains(rel.imageID)){
+        result.add(rel.imageID);
+      }
+    }
     return result;
   }
   static Set<int> getKeywordIDSet(String path){
     int pathIndex = pathList.indexOf(path);
     List<Relation> relations = relationSet.where((element)=>(element.imageID == pathIndex)? true: false) as List<Relation>;
     Set<int> result = <int>{};
-    relations.forEach((element) {
-      if(!result.contains(element.keywordID)) result.add(element.keywordID);
-    });
+    for(Relation rel in relations){
+      if(!result.contains(rel.keywordID)) result.add(rel.keywordID);
+    }
     return result;
   }
   static List<String> getPathList(String keyword){
@@ -136,7 +138,6 @@ class KeywordNotifier extends ChangeNotifier{
     }
     notifyListeners();
   }
-  
   void reloadPathIDSet(){
     if(pathIDSetList.isEmpty){
       pathIDSet.addAll(List.generate(KeywordData.pathList.length, (index) => index));

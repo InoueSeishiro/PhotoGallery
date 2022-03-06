@@ -6,12 +6,12 @@ import 'package:photo_gallery/widgets/side_menu.dart';
 import 'package:provider/provider.dart';
 
 class AdminPage extends StatelessWidget{
-  AdminPage({Key? key}) : super(key: key);
+  const AdminPage({Key? key}) : super(key: key);
 
   static const double menuWidth = 200;
-  final CenterBody centerBody = CenterBody(
+  final CenterBody centerBody = const CenterBody(
     menuWidth: menuWidth,
-    widgets: const [
+    widgets: [
       Home(),
       UserInfoEdit(),
       Setting(),
@@ -45,7 +45,7 @@ class Home extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       endDrawer: AdminDrawer(),
       body: ImageManager(),
     );

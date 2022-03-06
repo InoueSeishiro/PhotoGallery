@@ -11,7 +11,7 @@ class AdminDrawer extends StatelessWidget{
       child: ListView(
         padding: const EdgeInsets.all(10),
         children: [
-          AccountHeader(),
+          const AccountHeader(),
           ListTile(
               title:  const Text("ユーザー情報編集"),
               onTap: (){

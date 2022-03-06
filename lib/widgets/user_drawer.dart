@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:photo_gallery/model/keywords.dart';
+import 'package:photo_gallery/model/keyword.dart';
 import 'package:provider/provider.dart';
 
 class UserDrawer extends StatelessWidget {
@@ -80,12 +79,12 @@ class UserDrawer extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top:10,),
+            padding: const EdgeInsets.only(top:10,),
             child: ElevatedButton(
               onPressed: (){
                 Provider.of<KeywordNotifier>(context,listen: false).clear();
               },
-              child: Text("リセット"),
+              child: const Text("リセット"),
             ),
           ),
         ],

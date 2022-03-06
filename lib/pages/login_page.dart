@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage>{
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
+        child: SizedBox(
           width: 250,
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -42,43 +42,41 @@ class _LoginPageState extends State<LoginPage>{
                 obscureText: true,
               ),
               Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Text(
                   message,
                   style: const TextStyle(color: Colors.red, fontSize: 10),
                 ),
               ),
-              Container(
-                child: ElevatedButton(
-                  onPressed: () async {
-                    try{
-                      UserInfo result = await Login.login(emailController.text, passwordController.text);
-                      Provider.of<UserInfoNotifier>(context, listen: false).set(result);
-                      if(result.role == Login.user){
-                        setState(() {
-                          emailController.clear();
-                          passwordController.clear();
-                        });
-                        Navigator.pushNamed(context, '/user');
-                      }else if(result.role == Login.admin) {
-                        setState(() {
-                          emailController.clear();
-                          passwordController.clear();
-                        });
-                        Navigator.pushNamed(context, '/admin');
-                      }
-                    }catch(e){
+              ElevatedButton(
+                onPressed: () async {
+                  try{
+                    UserInfo result = await Login.login(emailController.text, passwordController.text);
+                    Provider.of<UserInfoNotifier>(context, listen: false).set(result);
+                    if(result.role == Login.user){
                       setState(() {
-                        message = "ログインに失敗しました。";
+                        emailController.clear();
+                        passwordController.clear();
                       });
+                      Navigator.pushNamed(context, '/user');
+                    }else if(result.role == Login.admin) {
+                      setState(() {
+                        emailController.clear();
+                        passwordController.clear();
+                      });
+                      Navigator.pushNamed(context, '/admin');
                     }
-                  },
-                  child: const Text("ログイン"),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
-                    onPrimary: Colors.white,
-                  ),
-                )
+                  }catch(e){
+                    setState(() {
+                      message = "ログインに失敗しました。";
+                    });
+                  }
+                },
+                child: const Text("ログイン"),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue,
+                  onPrimary: Colors.white,
+                ),
               )
             ],
           )

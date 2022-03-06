@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ImageManager extends StatelessWidget{
-  ImageManager({Key? key}): super(key: key);
+  const ImageManager({Key? key}): super(key: key);
   final double commandWidth = 60;
 
   @override
@@ -13,7 +13,7 @@ class ImageManager extends StatelessWidget{
           padding: EdgeInsets.only(right: commandWidth,),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
+            children: const [
               FileView(),
               ImageView(),
             ],
@@ -26,23 +26,23 @@ class ImageManager extends StatelessWidget{
 }
 
 class FileView extends StatelessWidget{
-  const FileView({Key? key,});
+  const FileView({Key? key,}): super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("File area"));
+    return const Center(child: Text("File area"));
   }
 }
 class ImageView extends StatelessWidget{
-  const ImageView({Key? key,});
+  const ImageView({Key? key,}): super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("Image area"));
+    return const Center(child: Text("Image area"));
   }
 }
 class CommandList extends StatelessWidget{
-  const CommandList({Key? key, required this.width});
+  const CommandList({Key? key, required this.width}): super(key: key);
   final double width;
 
   @override
@@ -66,7 +66,7 @@ class CommandList extends StatelessWidget{
 }
 
 class CommandIcon extends StatefulWidget {
-  CommandIcon({Key? key, required this.size, required this.icon}): super(key: key);
+  const CommandIcon({Key? key, required this.size, required this.icon}): super(key: key);
   final double size;
   final IconData icon;
   final double padding = 5;

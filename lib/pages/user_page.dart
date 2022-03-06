@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:photo_gallery/auth/login.dart';
-import 'package:photo_gallery/model/keywords.dart';
+import 'package:photo_gallery/model/GalleryMode.dart';
+import 'package:photo_gallery/model/keyword.dart';
+import 'package:photo_gallery/widgets/download_mode_button.dart';
 import 'package:photo_gallery/widgets/gallery.dart';
 import 'package:photo_gallery/widgets/right_side_button.dart';
 import 'package:photo_gallery/widgets/side_menu.dart';
@@ -48,8 +50,11 @@ class Home extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<KeywordNotifier>(
-      create: (_) => KeywordNotifier(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => KeywordNotifier()),
+        ChangeNotifierProvider(create: (_) => GalleryModeNotifier(mode: GalleryMode.normal()),)
+      ],
       child: Scaffold(
         endDrawer: UserDrawer(),
         body: Stack(
@@ -58,11 +63,7 @@ class Home extends StatelessWidget{
             RightSideButton(),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: Colors.redAccent,
-          child: const Icon(Icons.touch_app),
-        ),
+        floatingActionButton: const DownloadModeButton(),
       ),
     );
   }
@@ -82,7 +83,7 @@ class Setting extends StatelessWidget{
               Icons.account_circle,
               size: 200,
             ),
-            Text(Provider.of<UserInfoNotifier>(context).info?.email as String, style: TextStyle(fontSize: 20),),
+            Text(Provider.of<UserInfoNotifier>(context).info?.email as String, style: const TextStyle(fontSize: 20),),
             const Spacer(),
             ElevatedButton(
                 onPressed: (){},

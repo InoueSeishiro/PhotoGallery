@@ -15,10 +15,10 @@ class SideMenu extends StatelessWidget{
         width: menuWidth,
         child: Column(
           children: [
-            SizedBox(height: 64,),
-            FlutterLogo(),
-            SizedBox(height:16),
-            Text("Photo Gallery"),
+            const SizedBox(height: 64,),
+            const FlutterLogo(),
+            const SizedBox(height:16),
+            const Text("Photo Gallery"),
             const Spacer(),
             for(int i = 0; i<menuList.length; i++)
               MenuItem(
@@ -29,7 +29,7 @@ class SideMenu extends StatelessWidget{
               ),
             const Spacer(),
             MenuItem(
-              child: Text("ログアウト"),
+              child: const Text("ログアウト"),
               onTap: () {
                 Provider.of<UserInfoNotifier>(context, listen: false).logout();
               }
@@ -62,8 +62,8 @@ class MenuItem extends StatelessWidget{
 
 class MenuIndexNotifier extends ChangeNotifier{
   int index = 0;
-  void change(int new_index){
-    index = new_index;
+  void change(int newIndex){
+    index = newIndex;
     notifyListeners();
   }
 }

@@ -12,11 +12,11 @@ class AccountHeader extends StatelessWidget{
     return UserAccountsDrawerHeader(
       accountName: Text(
         name,
-        style: TextStyle(color: Colors.black, fontSize: 20),
+        style: const TextStyle(color: Colors.black, fontSize: 20),
       ),
       accountEmail: Text(
         Provider.of<UserInfoNotifier>(context, listen: false).info!.email,
-        style: TextStyle(color: Colors.grey, fontSize: 15),
+        style: const TextStyle(color: Colors.grey, fontSize: 15),
       ),
       currentAccountPicture: CircleAvatar(
         child: Text(
@@ -28,7 +28,7 @@ class AccountHeader extends StatelessWidget{
         ),
         backgroundColor: Colors.deepPurple,
       ),
-      decoration: BoxDecoration(color: Colors.white)
+      decoration: const BoxDecoration(color: Colors.white)
     );
   }
 }

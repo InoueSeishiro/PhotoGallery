@@ -8,9 +8,9 @@ class RightSideButton extends StatelessWidget{
     return Align(
       alignment: AlignmentDirectional.topEnd,
       child: Padding(
-        padding: EdgeInsets.only(top: 100),
+        padding: const EdgeInsets.only(top: 100),
         child: Material(
-          shape: BeveledRectangleBorder(
+          shape: const BeveledRectangleBorder(
             borderRadius: BorderRadiusDirectional.only(
               topStart: Radius.circular(5),
               bottomStart: Radius.circular(5),
@@ -21,7 +21,7 @@ class RightSideButton extends StatelessWidget{
               width: 50,
               height: 50,
               child: IconButton(
-                icon: Icon(
+                icon: const Icon(
                     Icons.search,
                 ),
               onPressed: (){ Scaffold.of(context).openEndDrawer(); },

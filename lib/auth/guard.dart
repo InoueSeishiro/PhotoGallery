@@ -13,7 +13,7 @@ class Guard extends StatelessWidget{
   Widget build(BuildContext context) {
     UserInfo? user = Provider.of<UserInfoNotifier>(context).info;
     if(user == null || user.role != role){
-      return LoginPage();
+      return const LoginPage();
     }else{
       return child;
     }

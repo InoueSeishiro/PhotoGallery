@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:photo_gallery/model/keywords.dart';
+import 'package:photo_gallery/model/keyword.dart';
 import 'package:provider/provider.dart';
 
 class Gallery extends StatelessWidget{
@@ -17,18 +17,18 @@ class Gallery extends StatelessWidget{
       children: List.generate(
         urlList.length,
         (index) => Center(
-            child:Image.network(urlList[index],
-              loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-                if (loadingProgress == null) {
-                  return child;
-                }
-                return Center(
-                  child: CircularProgressIndicator(
-                    value: loadingProgress.expectedTotalBytes != null? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes! : null,
-                  ),
-                );
-              },
-            )
+          child:Image.network(urlList[index],
+            loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+              if (loadingProgress == null) {
+                return child;
+              }
+              return Center(
+                child: CircularProgressIndicator(
+                  value: loadingProgress.expectedTotalBytes != null? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes! : null,
+                ),
+              );
+            },
+          )
         ),
       ),
     );
